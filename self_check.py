@@ -21,10 +21,7 @@ try:
   with open('users.json') as json_file:
     users = json.load(json_file)
 
-    datenow = date.today().strftime("%y-%m-%d")
-
-  os.mkdir(f"./images/{datenow}")
-  os.system("ls")
+  datenow = date.today().strftime("%y%m%d")
   
   for i in users:
     driver.get(i['url'])
@@ -37,7 +34,7 @@ try:
 
     driver.find_element_by_id('btnConfirm').click()
 
-    driver.save_screenshot(f"./images/{datenow}/{i['no']}.png")
+    driver.save_screenshot(f"./images/{datenow}-{i['no']}.png")
   
 except Exception as e:
   print(e)    
