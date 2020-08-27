@@ -2,7 +2,7 @@ name: Weather Bot (웨더봇)
 
 on:
    schedule:
-     - cron: '0 0 15 * * *' # kst 00:00
+     - cron: '0 0 15 * *' # kst 00:00
 
 jobs:
   build:
