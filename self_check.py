@@ -23,6 +23,8 @@ try:
 
   datenow = date.today().strftime("%y%m%d")
   
+  project_dir = os.path.dirname(os.path.abspath(__file__))
+  
   for i in users:
     driver.get(i['url'])
 
@@ -34,8 +36,8 @@ try:
 
     driver.find_element_by_id('btnConfirm').click()
 
-    driver.save_screenshot(f"./images/{datenow}-{i['no']}.png")
-    print(f"./images/{datenow}-{i['no']}.png")
+    driver.save_screenshot(f"{project_dir}/images/{datenow}-{i['no']}.png")
+    print(f"{project_dir}/images/{datenow}-{i['no']}.png")
   
 except Exception as e:
   print(e)    
