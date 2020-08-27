@@ -1,4 +1,4 @@
-name: Weather Bot (웨더봇)
+name: Self Check
 
 on:
    schedule:
