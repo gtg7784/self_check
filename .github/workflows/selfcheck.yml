@@ -1,0 +1,54 @@
+name: Weather Bot (웨더봇)
+
+on:
+   schedule:
+     - cron: '0 0 15 * * *' # kst 00:00
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-version: [3.7]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install python package
+      run: |        
+        pip install selenium
+        pip install chromedriver_autoinstaller
+    
+    - name: Install ubuntu package
+      run: |        
+        sudo apt-get install fonts-unfonts-core
+        sudo apt-get install fonts-unfonts-extra
+
+    - name: Get Time
+      id: time
+      uses: nanzm/get-time-action@v1.0
+      with:
+        timeZone: 9
+        format: 'YY-MM-DD'
+      
+    - name: Make Today Image Dir & Execute python file
+      run: |
+        cd images
+        mkdir "${{ steps.time.outputs.time }}"
+        cd ..
+        python ./self_check.py
+
+    - name: Commit files
+      run: |
+        git config --local user.email "gtg7784@naver.com"
+        git config --local user.name "gtg7784"
+        git commit -m "${{ steps.time.outputs.time }}" -a
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
