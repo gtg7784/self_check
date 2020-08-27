@@ -48,11 +48,9 @@ jobs:
       run: |
         git config --global user.email "gtg7784@naver.com"
         git config --global user.name "gtg7784"
-        git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-        git pull github ${GITHUB_REF} --ff-only
         git add .
         git commit -m "ADD SCREENSHOTS"
-        git push github HEAD:${GITHUB_REF}
+        git push origin master
 
     - name: Push changes
       uses: ad-m/github-push-action@master
