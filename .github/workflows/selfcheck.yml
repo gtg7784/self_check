@@ -44,12 +44,6 @@ jobs:
       run: |
         python ./self_check.py
 
-    - name: Check image file
-      run: |
-        cd ./images
-        ls
-        cd ../
-
     - name: Commit files
       run: |
         git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
