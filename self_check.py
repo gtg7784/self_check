@@ -35,6 +35,7 @@ try:
     driver.find_element_by_id('btnConfirm').click()
 
     driver.save_screenshot(f"./images/{datenow}-{i['no']}.png")
+    print(f"./images/{datenow}-{i['no']}.png")
   
 except Exception as e:
   print(e)    
