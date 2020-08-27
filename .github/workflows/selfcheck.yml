@@ -40,11 +40,8 @@ jobs:
         timeZone: 9
         format: 'YY-MM-DD'
 
-    - name: Make Today Image Dir & Execute python file
+    - name: Execute python file
       run: |
-        cd images
-        mkdir "${{ steps.time.outputs.time }}"
-        cd ..
         python ./self_check.py
 
     - name: Commit files

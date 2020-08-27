@@ -1,6 +1,7 @@
 from selenium import webdriver
 from datetime import date
 import json
+import os
 import chromedriver_autoinstaller
 
 try:
@@ -20,6 +21,10 @@ try:
   with open('users.json') as json_file:
     users = json.load(json_file)
 
+    datenow = date.today().strftime("%y-%m-%d")
+
+    os.mkdir(f"./images/{datenow}")
+
   
   for i in users:
     driver.get(i['url'])
@@ -31,8 +36,6 @@ try:
     driver.find_element_by_id('rspns090').click()
 
     driver.find_element_by_id('btnConfirm').click()
-
-    datenow = date.today().strftime("%y-%m-%d")
 
     driver.save_screenshot(f"./images/{datenow}/{i['no']}.png")
   
