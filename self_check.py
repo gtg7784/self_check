@@ -23,8 +23,8 @@ try:
 
     datenow = date.today().strftime("%y-%m-%d")
 
-    os.mkdir(f"./images/{datenow}")
-
+  os.mkdir(f"./images/{datenow}")
+  os.system("ls")
   
   for i in users:
     driver.get(i['url'])
