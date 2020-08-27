@@ -44,6 +44,12 @@ jobs:
       run: |
         python ./self_check.py
 
+    - name: Check image file
+      run: |
+        cd ./images
+        ls
+        cd ../
+
     - name: Commit files
       run: |
         git config --local user.email "gtg7784@naver.com"
