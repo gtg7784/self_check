@@ -40,7 +40,7 @@ try:
     print(f"{project_dir}/images/{datenow}-{i['no']}.png")
   
 except Exception as e:
-  print(e)    
+  print(e)
   driver.quit()
 
 finally:
