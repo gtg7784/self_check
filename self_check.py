@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 from datetime import date
 import json
 import os
@@ -28,6 +29,11 @@ try:
   for i in users:
     driver.get(i['url'])
 
+    try:
+      driver.find_element_by_class_name("ui-dialog-titlebar-close").click()
+    except NoSuchElementException:
+      pass
+
     driver.find_element_by_id('rspns011').click()
     driver.find_element_by_id('rspns02').click()
     driver.find_element_by_id('rspns070').click()
@@ -37,12 +43,11 @@ try:
     driver.find_element_by_id('btnConfirm').click()
 
     driver.save_screenshot(f"{project_dir}/images/{datenow}-{i['no']}.png")
-    print(f"{project_dir}/images/{datenow}-{i['no']}.png")
-  
+
 except Exception as e:
   print(e)
   driver.quit()
 
 finally:
-  print("finally...")
+  print("finish all self check")
   driver.quit()
