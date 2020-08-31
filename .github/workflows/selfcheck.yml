@@ -1,8 +1,8 @@
 name: Self Check
 
 on:
-  push:
-    branches: [ master ]
+#   push:
+#     branches: [ master ]
   schedule:
     - cron: '0 0 15 * *' # kst 00:00
 
