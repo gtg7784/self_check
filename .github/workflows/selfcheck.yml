@@ -1,10 +1,8 @@
 name: Self Check
 
 on:
-  push:
-    branches: [ master ]
   schedule:
-  - cron: '0 3 * * *' # kst 00:00
+  - cron: '0 15 * * *' # kst 00:00
 
 jobs:
   build:
@@ -55,3 +53,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+
