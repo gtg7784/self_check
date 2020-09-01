@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
   schedule:
-    - cron: '0 0 15 * *' # kst 00:00
+  - cron: '0 3 * * *' # kst 00:00
 
 jobs:
   build:
